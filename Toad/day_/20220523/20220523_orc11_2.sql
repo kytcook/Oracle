@@ -1,16 +1,14 @@
 TEMP의 자료 중에서 HOBBY가 등산 또는 낚시 인 경우를 읽어오기
 위하여 다음과 같이 조건을 줄 수 있다.
 ?
-SELECT
-       emp_id, emp_name, hobby
+SELECT emp_id, emp_name, hobby
   FROM temp
  WHERE hobby IN ('등산', '낚시'); -- or이니까 둘 중에 하나만 만족해도 된다.
  
 ?
 HOBBY가 NULL 또는 '등산'인 경우
 ?
-SELECT 
-       emp_id, emp_name, hobby
+SELECT emp_id, emp_name, hobby
   FROM temp
  WHERE hobby IN (NULL,'등산') -- 모른다를 비교할 순 없다.
 ?
@@ -18,10 +16,9 @@ SELECT 100 + null, 5*2, 5*null --NULL은 안된다. 암튼 안된다.
   FROM dual 
   
   
-SELECT 
-       comm
+SELECT comm
   FROM emp
-ORDER BY comm asc -- 오름차순 점점 크게
+ORDER BY comm desc -- 내림차순 점점 작게
 
 SELECT 
        comm
@@ -50,8 +47,7 @@ NULL은 항상 IS NULL 또는 IS NOT NULL로 비교되어야 하기 때문이다.
 그렇다면 
 hobby가 NULL 또는 '낚시' 모두에 속하지 않는 경우
 ?
-SELECT 
-       emp_id, emp_name, hobby
+SELECT emp_id, emp_name, hobby
   FROM temp
  WHERE hobby NOT IN (NULL,'낚시');   
 ?

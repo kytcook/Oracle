@@ -35,12 +35,12 @@ SELECT 1 as "존재하니(1: 있다, 0이면 없다)"
 
 SELECT count(empno)--컬럼명이 오는 자리에 함수를 사용할 수 있다.
   FROM emp
- WHERE ename  = "SCOTT"
+ WHERE ename  = 'SCOTT'
  
  
 SELECT 함수명(컬럼명)
   FROM emp
- WHERE 이름  = "SCOTT" 
+ WHERE 이름  = "SCOTT"
  
  
 우리회사에 근무하는 사원 중에서 이름이 SCOTT인 사원이 몇 명이니?

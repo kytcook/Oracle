@@ -7,7 +7,8 @@ SELECT 1+5, 6+2, 2*3, 10/2 FROM dual --옵티마이저를 통한 연산
 SELECT count(empno) FROM emp
 
 SELECT count(empno) 
-  FROM (SELECT empno FROM emp WHERE sal >= 2000) - 인라인뷰 - 보안 - 금융권
+  FROM (SELECT empno FROM emp WHERE sal >= 2000) 
+-- 인라인뷰 - 보안 - 금융권
 --FROM 절 뒤에 집합이 온다.
 
 --DBA 
@@ -27,11 +28,11 @@ SELECT deptno FROM dept
 
 
 SELECT deptno FROM dept
-MINUS
+MINUS -- 차집합
 SELECT deptno FROM emp
 
 SELECT deptno FROM dept
-INTERSECT
+INTERSECT -- 교집합
 SELECT deptno FROM emp
 -- 부서 4가지 사원 3가지 / 부서가 높은 집함
 
