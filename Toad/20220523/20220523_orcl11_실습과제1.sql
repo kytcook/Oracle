@@ -1,32 +1,55 @@
 1.1.월 급여는 연봉을 18로 나누어 홀수 달에는 연봉의 1/18이 지급되고,
 짝수달에는 연봉의 2/18가 지급된다고 가정했을 때 홀수 달과 짝수 달에 받을 금액을 나타내시오.
 SELECT * FROM temp
+------------------------------------------------------------
 SELECT emp_name, salary FROM temp
+
+----------------------------------------------------------
 SELECT emp_name, salary, salary/18 "홀수달에 급여"
   FROM temp
+  
+----------------------------------------------------  
 SELECT emp_name, salary
      , salary/18 "홀수달에 급여" , salary/9 "짝수달에 급여"
   FROM temp
+--------------------------------------------------  
 SELECT emp_name, salary
      , salary/18 "홀수달에 급여" , salary/9 "짝수달에 급여"
   FROM temp
+  
+------------------------------------------------------------  
+
+
 SELECT round(1234567.456, 1) -- 소수 2번째 자리에서 반올림하기
       ,round(1234567.456, -1) -- 소수점 기준으로 위로 올라가면 음수로 생각함
       ,round(1234567.456, -2) -- 소수점 기준으로 위로 올라가면 음수로 생각함
       ,round(1234567.456, 2)
   FROM dual
+  
+----------------------------------------------------------  
+  
 SELECT emp_name, salary
      , round(salary/18,-1) "홀수달에 급여"
      , round(salary/9,-1) "짝수달에 급여"
   FROM temp
+ 
+-------------------------------------------------------------------------- 
+  
 SELECT emp_name, salary
      , round(salary/18,-1)||'원' "홀수달에 급여"
      , round(salary/9,-1)||'원' "짝수달에 급여"
   FROM temp
+  
+------------------------------------------------------------------  
+  
+  
 SELECT emp_name, salary
      , TO_CHAR(round(salary/18,-1),'999,999,999')||'원' "홀수달에 급여"
      , TO_CHAR(round(salary/9,-1),'999,999,999')||'원' "짝수달에 급여"
   FROM temp
+  
+--------------------------------------------------------------------  
+  
 SELECT
        550000, TO_CHAR(sysdate, 'YYYYMMDD')
        ,TO_CHAR(sysdate, 'MMDD')
@@ -114,20 +137,30 @@ SELECT count(empno)
   FROM (SELECT empno FROM emp WHERE sal >= 2000)  - 인라인뷰 - 보안 -금융권
 DBA
 SELECT empno FROM emp WHERE sal >= 2000
+
+----------------------------------------------------------------------
 SELECT 1 FROM dual
 UNION ALL
 SELECT 2 FROM dual
 UNION ALL
 SELECT 3 FROM dual
+
+----------------------------------------------------------------
 SELECT deptno FROM emp
 MINUS
 SELECT deptno FROM dept
+
+----------------------------------------------------------
 SELECT deptno FROM dept
 MINUS
 SELECT deptno FROM emp
+
+--------------------------------------------------------------------
 SELECT deptno FROM dept
 INTERSECT
 SELECT deptno FROM emp
+
+--------------------------------------------------------------
 DELETE FROM dept
 SELECT
        point_nu

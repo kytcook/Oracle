@@ -2,6 +2,7 @@
 --2022년 5월 23일 데이터베이스 구현 과제입니다.        
 --이들 데이터의 작업시간이 짧게 걸리는 시간 순서대로 1부터 15까지의 순위를         
 --매겨서 출력하시오.  
+
 --------------------------------------------------------------------      
 SELECT SEQ_VC 
       ,WORKCD_VC
@@ -21,6 +22,7 @@ SELECT SEQ_VC
 ---------------------------------------------------------------------- 
 
  ROLLBACK
+ 
 ---------------------------------------------------------------------------- 
  SELECT * FROM T_WORKTIME
  
@@ -29,6 +31,7 @@ SELECT TIME_NU
       ,WORKCD_VC
   FROM T_WORKTIME
 ORDER BY TIME_NU ASC
+
 ------------------------------------------------------------------
 SELECT TIME_NU AS "작업시간"
       ,SEQ_VC
@@ -36,3 +39,20 @@ SELECT TIME_NU AS "작업시간"
   FROM T_WORKTIME
 ORDER BY TIME_NU ASC
 
+SELECT TIME_NU AS "작업시간"
+      ,SEQ_VC
+      ,WORKCD_VC
+  FROM T_WORKTIME
+ORDER BY TIME_NU ASC
+
+
+INSERT into T_WORKTIME
+(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)
+
+
+SELECT dual
+      ,TIME_NU AS "작업시간"
+      ,SEQ_VC
+      ,WORKCD_VC
+  FROM T_WORKTIME
+ORDER BY TIME_NU ASC
