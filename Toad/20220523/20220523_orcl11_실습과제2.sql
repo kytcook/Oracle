@@ -56,3 +56,23 @@ SELECT dual
       ,WORKCD_VC
   FROM T_WORKTIME
 ORDER BY TIME_NU ASC
+
+-------------------선생님이 풀이-------------------
+
+SELECT * FROMT T_WORKTIME
+
+SELECT workcd_vc, time_nu FROM t_worktime
+
+SELECT workcd_vc, time_nu FROM t_worktime
+ORDER BY time_nu asc
+
+SELECT rownum workcd_vc, time_nu FROM t_worktime
+ORDER BY time_nu asc
+--order by 없이 정렬해보면 
+SELECT rownum workcd_vc, time_nu FROM t_worktime
+
+SELECT rownum rnk, time_nu
+  FROM (
+        SELECT workcd_vc, time_nu FROM t_worktime
+        ORDER BY time_nu asc
+        )

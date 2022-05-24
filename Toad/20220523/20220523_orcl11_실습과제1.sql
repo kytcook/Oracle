@@ -131,6 +131,7 @@ SELECT
 7.TEMP의 자료를 직급 명(LEV)에 ASCENDING하면서 결과내에서 다시 사번 순으로
 DESCENDING하게 하는 ORDER BY하는 문장을 만들어 보시오.
 SELECT 1+5, 6-2, 2*3, 10/2 FROM dual
+
 패턴
 SELECT count(empno) FROM emp
 SELECT count(empno)
