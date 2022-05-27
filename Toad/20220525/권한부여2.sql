@@ -10,6 +10,7 @@ select tablespace_name, file_name, autoextensible, increment_by
 create user tomato identified by tiger
 default tablespace TS_TOMATO;
 
+
 ----------------------------------------------------------
 
 grant create session to tomato  with admin option;
