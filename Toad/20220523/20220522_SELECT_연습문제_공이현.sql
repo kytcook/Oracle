@@ -145,4 +145,6 @@ SELECT EMP_ID as "사번", EMP_NAME as "성명" FROM TEMP
 
 
 7.TEMP의 자료를 직급 명(LEV)에 ASCENDING하면서 결과내에서 다시 사번 순으로 DESCENDING하게 하는 ORDER BY하는 문장을 만들어 보시오.
-SELECT * FROM TEMP order by LEV ASC, EMP_ID DESC
+SELECT * 
+  FROM TEMP 
+order by LEV ASC, EMP_ID DESC

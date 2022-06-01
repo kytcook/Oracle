@@ -1,20 +1,21 @@
-SELECT * FROM t_letitbe
+SELECT * FROM t_letitbe;
 
-
-SELECT MOD(6,2), MOD(6,4) FROM dual
 --if(6%2==0)
+SELECT MOD(6,2), MOD(6,4) 
+FROM dual;
 
-SELECT DECODE(1,1,'같다','다르다'), DECODE(1,2,'같다','다르다') FROM dual
 --if문을 사용하기위한 함수
+SELECT DECODE(1,1,'같다','다르다'), DECODE(1,2,'같다','다르다') 
+FROM dual;
 
 ----------------------------------------------------------------------
 SELECT 
-       DECODE(MOD(seq_vc,2),1,words_vc) eng_words
-  From t_letitbe
+       DECODE(MOD(seq_vc,2),1,words_vc) as "영어가사"
+  From t_letitbe;
   
 SELECT 
        DECODE(MOD(seq_vc,2),1,words_vc,null) eng_words
-  From t_letitbe
+  From t_letitbe;
 
 ----------------------------------------------------------------------
 SELECT 
@@ -23,23 +24,26 @@ SELECT
 UNION ALL
 SELECT 
        DECODE(MOD(seq_vc,2),0,words_vc,null) kor_words
-  From t_letitbe
+  From t_letitbe;
   
-SELECT MOD(seq_vc,2) no
-       DECODE(MOD(seq_vc,2),0,words_vc,null) eng_words
-  From t_letitbe  
+SELECT MOD(seq_vc,2)
+      ,DECODE(MOD(seq_vc,2),0,words_vc,null) kor_words
+  From t_letitbe;  
  
-SELECT MOD(seq_vc,2) no
-       DECODE(MOD(seq_vc,2),1,words_vc,null) eng_words
+SELECT MOD(seq_vc,2) 
+      ,DECODE(MOD(seq_vc,2),1,words_vc,null) eng_words
   FROM t_letitbe
- WHERE MOD(seq_vc,2) = 1
+ WHERE MOD(seq_vc,2) = 1;
  
-SELECT seq_vc FROM t_letitbe
-ORDER BY seq_Vc desc
+SELECT seq_vc 
+  FROM t_letitbe
+ORDER BY seq_Vc desc;
 
-SELECT seq_vc FROM t_letitbe
-ORDER BY TO_NUMBER(seq_vc) desc
+SELECT seq_vc 
+  FROM t_letitbe
+ORDER BY TO_NUMBER(seq_vc) desc;
   
+--group by로 고민해보기
 SELECT seq_vc
   FROM (
         SELECT
@@ -50,7 +54,8 @@ SELECT seq_vc
             seq_vc, decode(mod(seq_vc,2),0, words_vc)
           FROM t_letitbe
        )
-GROUP BY seq_vc  
- --group by로 고민해보기
-SELECT seq_vc, WORDS_VC FROM T_LETITBE
+GROUP BY seq_vc;  
+
+SELECT seq_vc, WORDS_VC 
+  FROM T_LETITBE;
 
