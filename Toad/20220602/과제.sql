@@ -20,11 +20,11 @@ SELECT
       ,SUM(QTY_NU) as "판매개수"
       ,SUM(PRICE_NU) as "판매가격"
   FROM T_ORDERBASKET
-GROUP BY ROLLUP(seq_nu, indate_vc) ;
+GROUP BY ROLLUP(seq_nu, indate_vc);
 
 
 SELECT indate_vc as "판매날짜"
       ,SUM(QTY_NU) as "판매개수"
       ,SUM(PRICE_NU) as "판매가격"
   FROM T_ORDERBASKET
-GROUP BY CUBE(indate_vc)
+GROUP BY CUBE(indate_vc);
