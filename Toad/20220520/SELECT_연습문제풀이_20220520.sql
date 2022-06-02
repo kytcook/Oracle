@@ -160,28 +160,31 @@ SELECT ename , comm
 
 SELECT ename, comm
   FROM emp
- WHERE comm = 'null' --문자열 null을 비교한다.
+ WHERE comm = 'null'; 
+ 
+ --문자열 null을 비교한다.
 
-우리 회사에 근무하는 사원들의 급여 총액은 얼마 입니까?
-SELECT sum(sal) FROM emp
+--우리 회사에 근무하는 사원들의 급여 총액은 얼마 입니까?
+SELECT sum(sal) 
+  FROM emp;
 
-SELECT
-       DECOD(job,'CLERK', sal)
-      ,DECOD(job,'SALESMAN', sal)
-      ,DECOD(job,'CLERK',null,'SALESMAN',null)
+SELECT DECODE(job,'CLERK', sal) AS "클라크"
+      ,DECODE(job,'SALESMAN', sal) AS "세일즈맨"
+      ,DECODE(job,'CLERK',null,'SALESMAN',null)
   FROM emp
   
   
   
 SELECT
-       SUM (DECOD(job,'CLERK', sal)) as "clerk_sum"
-      ,SUM (DECOD(job,'SALESMAN', sal)) as "salesman_sum"
-      ,SUM (DECOD(job,'CLERK',null,'SALESMAN',null)) as "etc_sum"
+       SUM (DECODE(job,'CLERK', sal)) as "clerk_sum"
+      ,SUM (DECODE(job,'SALESMAN', sal)) as "salesman_sum"
+      ,SUM (DECODE(job,'CLERK',null,'SALESMAN',null)) as "etc_sum"
   FROM emp
 
 
 ------------------------------------------------------------
-4.TEMP 테이블에서 취미가 NULL인 사람은 모두 HOBBY를 “없음”이라고 값을 치환하여 가져오고 나머지는 그대로 값을 읽어오시오.
+--4.TEMP 테이블에서 취미가 NULL인 사람은 모두 HOBBY를 “없음”이라고 값을 치환하여
+-- 가져오고 나머지는 그대로 값을 읽어오시오.
 
 SELECT 
        emp_name, NVL(hobby,'없음') as "hobby"
@@ -212,20 +215,23 @@ order by ename asc --오름차순
 
 SELECT
        /* +index_desc(emp pk_emp) */ empno
-  FROM emp
+  FROM emp;
   
 -- 테이블에서 pk는 인덱스가 제공됨
 -- 인덱스가 있는 컬럼은 테이블 access 없이 출력 가능하다.
  
-SELECT ename FROM emp
+SELECT ename FROM emp;
+
 -- 사원번호는 순서대로 정렬되어 있다.PK. 식별자이다. null값은 허용되지 않는다.
 -- PK는 중복도 안된다.PK는 인덱스(색인) 제공 - 검색속도 향상
 -- 사원이름은 PK가 아니다. 
 
-SELECT rowid rid FROM emp
+SELECT rowid rid FROM emp;
 
-SELECT ename, deptno, job FROM emp
-WHERE rowid = 'AAARE8AAEAAAACTAAC'
+SELECT ename, deptno, job 
+  FROM emp
+ WHERE rowid = 'AAARE8AAEAAAACTAAC';
+
 /*
  rowid 로우 아이디
  DBMS가 가지고 있는 모든 데이터의 각각의 고유한 식별자이다.
@@ -238,21 +244,21 @@ WHERE rowid = 'AAARE8AAEAAAACTAAC'
  4) 3자리 : 블록 내의 행 번호
 */
 
-rownum
+--rownum
+
+SELECT rownum, empno FROM emp;
 
 SELECT rownum, empno FROM emp
-
-SELECT rownum, empno FROM emp
-WHERE deptno = 30
+WHERE deptno = 30;
 
 
-SELECT empno FROM emp
+SELECT empno FROM emp;
 
-SELECT empno, ename FROM emp
+SELECT empno, ename FROM emp;
 
 
 
-NVL
+--NVL
 
 SELECT comm, NVL(comm, 0) FROM emp
 
@@ -262,17 +268,18 @@ SELECT comm, NVL(comm, 0) FROM emp
 5.TEMP의 자료 중 HOBBY의 값이 NULL인 사원을 ‘등산’으로 치환했을 때 HOBBY가
  ‘등산인 사람의 성명을 가져오는 문장을 작성하시오.
 
-SELECT emp_name, NVL(hobby, '없음'), NVL(hobby, '등산') FROM temp
+SELECT emp_name, NVL(hobby, '없음'), NVL(hobby, '등산') 
+  FROM temp
 
 
 6.TEMP의 자료 중 EMP_ID와 EMP_NAME을 각각 ‘사번’,’성명’으로 표시되어 DISPLAY되도록 COLUMN ALLIAS를 부여하여 SELECT 하시오.
 
 SELECT
-       emp_id, emp_name
+      emp_id, emp_name
  FROM temp
 
 SELECT
-       emp_id as "사원아이디", emp_name as "성명"
+      emp_id as "사원아이디", emp_name as "성명"
  FROM temp
 
 
@@ -333,6 +340,7 @@ MINUS
 SELECT ename, comm
   FROM emp
  WHERE comm is null
+ 
 --INTERSECT  --집합적 사고 
 SELECT ename, comm
   FROM emp
@@ -364,8 +372,7 @@ WHERE rownum < 4 -- rownum이 조회결과에 대해서 번호를 정렬하여 붙여준다.
 SELECT time_nu FROM t_worktime
 WHERE rownum < 4
 
-SELECT 
-       a.time_nu -- 양쪽에 다있는 time_nu에 알리야스 a.를 붙여준다.
+SELECT a.time_nu -- 양쪽에 다있는 time_nu에 알리야스 a.를 붙여준다.
   FROM (
         SELECT time_nu FROM t_worktime
         WHERE rownum < 4
@@ -374,7 +381,9 @@ SELECT
         SELECT time_nu FROM t_worktime
         WHERE rownum < 4
        )b
-WHERE a.time_nu <= b.time_nu --나보다 크거나 작은거 6개
+ WHERE a.time_nu <= b.time_nu;
+
+--나보다 크거나 작은거 6개
 
 
 SELECT 
@@ -397,17 +406,18 @@ WHERE a.time_nu <= b.time_nu -- a가 기준으로 b가 크거나 같은
 
 SELECT deptno FROM emp, dept -- deptno는 양쪽 테이블에 모두 발걸치고 있다.
 
-SELECT a.deptno FROM emp a, dept b
+SELECT a.deptno 
+  FROM emp a, dept b;
 
-SELECT b.deptno FROM emp a, dept b
+SELECT b.deptno 
+  FROM emp a, dept b;
+  
 -- pk는 인덱스를 가지고 있다. 테이블을 access하지 않아도 된다.
 -- 테이블에 접근하지 않아도 된다.
 -- 
-SELECT empno FROM emp -- 사원번호는 pk니까 정렬되어있다. 인덱스.
+SELECT empno FROM emp; -- 사원번호는 pk니까 정렬되어있다. 인덱스.
 
-
-SELECT 
-       a.time_nu, count(b.time_nu) 
+SELECT a.time_nu, count(b.time_nu) 
   FROM (
         SELECT time_nu FROM t_worktime
         WHERE rownum < 4
@@ -417,7 +427,7 @@ SELECT
         WHERE rownum < 4
        )b
 WHERE a.time_nu <= b.time_nu
-GROUP BY a.time_nu
+GROUP BY a.time_nu;
 
 ------------------------------------
 /*
@@ -432,30 +442,30 @@ GROUP BY a.time_nu
  FK는 릴레이션이다.(1:n의 관계형태)
  부서집합의 PK는 사원집합으로 가서 FK가 되었다.
 */
+
+--부적합한 식별자 :  emp안에 dname이 없다.
 SELECT empno
   FROM emp
- GROUP BY dname --부적합한 식별자 :  emp안에 dname이 없다.
+ GROUP BY dname; 
  
+--GROUP BY 표현식이 아닙니다.
 SELECT empno
   FROM emp
- GROUP BY deptno --GROUP BY 표현식이 아닙니다.
+ GROUP BY deptno;
  
 SELECT deptno
   FROM emp
- GROUP BY deptno
+ GROUP BY deptno;
 
-SELECT empno
+--중복이 될 수 없다. 
+SELECT empno 
   FROM emp
- GROUP BY empno --중복이 될 수 없다. 
+GROUP BY empno;
  
+-- 누가 6명인지 알 수가 없다.
 SELECT COUNT(empno)
   FROM emp
- GROUP BY deptno -- 누가 6명인지 알 수가 없다.
- 
-SELECT deptno, COUNT(empno)
-  FROM emp
- GROUP BY deptno
- 
+ GROUP BY deptno;
 
 SELECT deptno, COUNT(empno)
   FROM emp
@@ -469,26 +479,32 @@ SELECT deptno, COUNT(empno)
 --일번컬럼과 그룹함수가 같이 올 수 있나?
 --없다.
 
-SELECT sum(sal) FROM emp
+SELECT sum(sal) 
+  FROM emp;
 
-SELECT sum(sal), ename FROM emp
+SELECT sum(sal), ename 
+  FROM emp;
 
 -- 문법적인 문제는 해결했지만 의미가 없다.(의존관계가 없음)
-SELECT sum(sal), max(ename) FROM emp
+SELECT sum(sal), max(ename) 
+  FROM emp;
 
-SELECT sum(sal), max(ename) FROM emp
-GROUP BY deptno -- 의미가 있나? 그 부수에 근무하는 전체 사원들의 급여액
+-- 의미가 있나? 그 부서에 근무하는 전체 사원들의 급여액
+SELECT deptno, sum(sal), max(ename) 
+  FROM emp
+GROUP BY deptno;
 
-SELECT sum(sal) FROM emp
+
+-- group by에 사용한 컬럼명은 select 다음에 사용했을 때
+-- 의미가 있다. 의존관계 있다.
 
 
-group by에 사용한 컬럼명은 select 다음에 사용했을 때
-의미가 있다. 의존관계 있다.
+SELECT sum(sal), deptno 
+  FROM emp
+GROUP BY deptno;
 
-SELECT sum(sal), deptno FROM emp
-GROUP BY deptno
-
-SELECT max(sal),avg(sal), deptno FROM emp
+SELECT max(sal),avg(sal), deptno 
+  FROM emp
 GROUP BY deptno
 
 --그렇다면 해결 방법은 있나요?

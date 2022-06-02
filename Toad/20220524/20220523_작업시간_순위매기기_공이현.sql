@@ -1,41 +1,52 @@
-select * from t_worktime
+select * from t_worktime;
 
-select time_nu as "일한 시간" from t_worktime order by time_nu asc
+select time_nu as "일한 시간" 
+  from t_worktime 
+order by time_nu asc;
 
 --select time_nu as "일한 시간" rank() over (order by time_nu asc) '순위' from t_worktime order by time_nu as 순위 from t_worktime
 
 
 -- rank() over 함수 사용
-select seq_vc, workcd_vc, time_nu, Rank() over(order by time_nu asc) 순위 from t_worktime
+select seq_vc, workcd_vc, time_nu
+     , Rank() over(order by time_nu asc) as "순위" 
+  from t_worktime;
 
-select seq_vc, workcd_vc, time_nu as "일한 시간", Rank() over(order by time_nu asc) 순위 from t_worktime
+select seq_vc, workcd_vc, time_nu as "일한 시간"
+     , Rank() over(order by time_nu asc) 순위 
+from t_worktime;
 
->>
-select * from t_worktime
+-->>
 
-select workec_vc, time_nu from t_worktime
+select * from t_worktime;
 
-select workec_vc, time_nu from t_worktime
-order by time_nu asc
+select workcd_vc, time_nu from t_worktime;
 
-select rownum rnk, workce_vc, time_nu from t_worktime
-order by time_nu asc
+select workcd_vc, time_nu 
+  from t_worktime
+order by time_nu asc;
+
+select rownum rnk, workcd_vc, time_nu 
+  from t_worktime
+order by time_nu asc;
 
 
-select rownum rnk, workcd_vc, time_nu from t_worktime
+select rownum rnk, workcd_vc, time_nu 
+  from t_worktime
  
-  from (
+ from (
         select workcd_vc, time_nu from t_worktime
         order by time_nu asc
        )
 
-select ename from emp
-select deptno from dept
+select ename from emp;
 
-select ename, deptno, dname
-  from emp
+select deptno from dept;
+
+select ename, deptno, ename
+  from emp;
   
-select dname from dept
+select dname from dept;
 
 select a.time_nu, b.time_nu from t_worktime a, t_worktime b
 

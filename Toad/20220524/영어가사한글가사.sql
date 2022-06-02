@@ -4,44 +4,44 @@
 
 SELECT * FROM t_letitbe;
 
-SELECT seq_vc 
-      ,TO_NUMBER(seq_vc)
-  FROM t_letitbe;
 --함수를 씌우기 전의 상태
 --함수가 씌어진 상태는 가짜다(복사본이다).
+SELECT seq_vc, TO_NUMBER(seq_vc)
+  FROM t_letitbe;
 
 
-SELECT empno FROM emp
-DECODE(MOD(2,2),1,'홀수')
+SELECT empno 
+  FROM emp
+DECODE(MOD(2,2),1,'홀수');
 
 SELECT DECODE(MOD(2,2),0,'홀수')
-  FROM dual
+  FROM dual;
   
-IF 2%2=0 THEN
-  return '짝수'
-ELSIF 2%2=1 THEN
-  return '홀수'
-END;
+-- IF 2%2=0 THEN
+--   return '짝수'
+-- ELSIF 2%2=1 THEN
+--   return '홀수'
+-- END;
 
 SELECT
        MOD(seq_vc,2) n
-  FROM t_letitbe
+  FROM t_letitbe;
 
+ --별칭 알리야스 명칭을 쓰는 것은 맞지않다.
 SELECT
        MOD(seq_vc,2) n
   FROM t_letitbe
  WHERE n = 1
- --별칭 알리야스 명칭을 쓰는 것은 맞지않다.
  
-SELECT
-    n
+ 
+SELECT n
   FROM (
        SELECT
               MOD(seq_vc,2) n
          FROM t_letitbe
        )
 WHERE n=1
---인라인뷰 : FROM절 밑에 SELECT문이 오면 인라인뷰
+-- 인라인뷰 : FROM절 밑에 SELECT문이 오면 인라인뷰
 -- 테이블이 아니고 집합
 -- 인라인뷰를 쓰면 조건절에서 알리야스 명을 사용할 수 있다.
 

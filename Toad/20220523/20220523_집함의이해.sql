@@ -13,7 +13,9 @@ SELECT count(empno)
 
 --DBA 
   
-SELECT empno FROM emp WHERE sal >= 2000
+SELECT empno 
+  FROM emp 
+ WHERE sal >= 2000
 
 SELECT 1 FROM DUAL
 UNION ALL
@@ -24,16 +26,20 @@ SELECT 3 FROM DUAL
 
 SELECT deptno FROM emp
 MINUS
-SELECT deptno FROM dept
+SELECT deptno FROM dept;
 
 
-SELECT deptno FROM dept
-MINUS -- 차집합
-SELECT deptno FROM emp
+SELECT deptno 
+  FROM dept
+ MINUS -- 차집합
+SELECT deptno 
+  FROM emp;
 
-SELECT deptno FROM dept
+SELECT deptno 
+  FROM dept
 INTERSECT -- 교집합
-SELECT deptno FROM emp
+SELECT deptno 
+  FROM emp
 -- 부서 4가지 사원 3가지 / 부서가 높은 집함
 
 DELETE FROM dept --집함에 있는 데이터를 삭제한다.
