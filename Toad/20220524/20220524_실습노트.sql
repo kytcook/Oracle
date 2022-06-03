@@ -2,14 +2,14 @@ IS NOT NULL
 
 SELECT ename, comm
   FROM emp 
- WHERE 
+
  
 SELECT ename, comm
   FROM emp
 MINUS
 SELECT ename, comm
   FROM emp
- WHERE comm is null
+ WHERE comm is null;
  
 SELECT ename, comm
   FROM emp
@@ -34,15 +34,15 @@ ORDER BY -- 스캔한대로 출력하지 못하고 2차 가공을 해야하만 한다. >> 속도가 느리�
 
 SELECT 
        /*+index_desc(emp pk_emp)*/ empno
-  FROM emp
+  FROM emp;
   
 -- 테이블에서 pk는 인덱스가 제공되기 때문에
 -- 인덱스가 있는 컬럼은 데이ㅣ블 access 없이 출력가능함
 
-select rowid rno from emp
+select rowid rno from emp;
 
 select ename, deptno, job from emp
- where rowid = 'AAARE8AAEAAAACTAAC'
+ where rowid = 'AAARE8AAEAAAACTAAC';
  
 -- DBMS가 가지고 있는 모든 데이터의 각각의 고유한 식별자
 -- index 테이블은 index keydhk rowid로 구성됨
@@ -52,39 +52,39 @@ select ename, deptno, job from emp
 -- 3) 6자리: 블록번호
 -- 4) 3자리: 블록 내의 행 번호
 
-rownum
+rownum;
+
+SELECT rownum, empno FROM emp;
 
 SELECT rownum, empno FROM emp
-
-SELECT rownum, empno FROM emp
- WHERE deptno = 30
+ WHERE deptno = 30;
  
  
 -- group by절 
-우리 회사에 근무하는 사원들에 대해서 부서별 사원 수를 출력하고 싶다. 어떻게하지?
+-- 우리 회사에 근무하는 사원들에 대해서 부서별 사원 수를 출력하고 싶다. 어떻게하지?
 
-사원집합 - fk -  deptno
-fk는 중복이 허락된다.
-인덱스를 제공하지 않는다.
-fk는 릴레이션이다. (1:n 관계형태)
+-- 사원집합 - fk -  deptno
+-- fk는 중복이 허락된다.
+-- 인덱스를 제공하지 않는다.
+-- fk는 릴레이션이다. (1:n 관계형태)
 
-SELECT empno
+SELECT ename
   FROM emp
-GROUP BY dname
+GROUP BY ename;
 
 SELECT deptno
   FROM emp
-GROUP BY deptno
+GROUP BY deptno;
 
 SELECT empno
   FROM emp
-GROUP BY empno
+GROUP BY empno;
 
 SELECT count(empno)
   FROM emp
-GROUP BY deptno
+GROUP BY deptno;
 
-일반 컬럼과 그룹함수가 같이 올 수 있나? 없다 !
+--일반 컬럼과 그룹함수가 같이 올 수 있나? 없다 !
 select sum(sal) from emp
 select sum(sal), ename from emp
 
