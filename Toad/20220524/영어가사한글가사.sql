@@ -31,7 +31,7 @@ SELECT
 SELECT
        MOD(seq_vc,2) n
   FROM t_letitbe
- WHERE n = 1
+ WHERE n = 1;
  
  
 SELECT n
@@ -40,7 +40,8 @@ SELECT n
               MOD(seq_vc,2) n
          FROM t_letitbe
        )
-WHERE n=1
+WHERE n=1;
+
 -- 인라인뷰 : FROM절 밑에 SELECT문이 오면 인라인뷰
 -- 테이블이 아니고 집합
 -- 인라인뷰를 쓰면 조건절에서 알리야스 명을 사용할 수 있다.
@@ -48,7 +49,7 @@ WHERE n=1
 SELECT
        MOD(seq_vc,2) no
       ,DECODE(MOD(seq_vc,2),1,words_vc)
-  FROM t_letitbe
+  FROM t_letitbe;
 
 SELECT
        rownum no, eng_words
@@ -58,7 +59,7 @@ SELECT
               ,DECODE(MOD(seq_vc,2),1,words_vc) eng_words
           FROM t_letitbe
        )
-WHERE no=1
+WHERE no=1;
 
 SELECT
        rownum no, eng_words
@@ -68,7 +69,8 @@ SELECT
               ,DECODE(MOD(seq_vc,2),1,words_vc) eng_words
           FROM t_letitbe
        )
-WHERE no=1
+WHERE no=1;
+
 
 ----------------------------2번
 SELECT
