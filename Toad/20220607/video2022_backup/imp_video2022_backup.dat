@@ -1,0 +1,6 @@
+FILE="D:\java_study\Database\Oracle\Toad\20220607\video2022_backup\video2022_backup.DMP"
+LOG="D:\java_study\Database\Oracle\Toad\20220607\video2022_backup\imp_video2022_backup.log"
+FROMUSER=VIDEO2022
+TOUSER=VIDEO2022
+IGNORE=Y
+FEEDBACK=1000
