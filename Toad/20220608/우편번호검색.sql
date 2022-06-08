@@ -65,8 +65,27 @@ SELECT zdo
         ORDER BY zdo asc
        );
        
+SELECT '전체' sigu FROM dual
+UNION ALL
 SELECT sigu
-
+  FROM (
+        SELECT
+               distinct(sigu) sigu
+          FROM zipcode_t
+         WHERE zdo =:userDo
+        ORDER BY zdo asc
+       );
+       
+SELECT '전체' dong FROM dual
+UNION ALL
+SELECT dong
+  FROM (
+        SELECT
+               distinct(dong) dong
+          FROM zipcode_t
+         WHERE sigu =:userGu
+        ORDER BY dong asc
+       );
 
 
 
