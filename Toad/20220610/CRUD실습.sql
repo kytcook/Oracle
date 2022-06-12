@@ -3,8 +3,6 @@ SELECT * FROM dept;
 INSERT INTO dept(deptno, dname, loc)
           VALUES(71,'°³¹ß1ÆÀ','¼­±ÍÆ÷');
 
-INSERT INTO dept(deptno, dname, loc)
-          VALUES(71,'°³¹ß1ÆÀ','¼­±ÍÆ÷');          
 --int result = pstmt.excuteUpdate();
 
 SELECT * FROM dept
