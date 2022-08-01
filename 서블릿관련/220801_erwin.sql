@@ -1,0 +1,49 @@
+CREATE TABLE SCOTT.BOARD_MASTER_T
+(
+  B_NO       NUMBER(5)                          NOT NULL,
+  B_TITLE    VARCHAR2(100 BYTE),
+  B_WRITER   VARCHAR2(50 BYTE),
+  B_CONTENT  VARCHAR2(4000 BYTE),
+  B_HIT      NUMBER(5),
+  B_GROUP    NUMBER(5),
+  B_POS      NUMBER(5),
+  B_STEP     NUMBER(5),
+  B_DATE     VARCHAR2(50 BYTE),
+  B_PW       VARCHAR2(10 BYTE)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+
+CREATE UNIQUE INDEX SCOTT.XPKBOARD_MASTER_T ON SCOTT.BOARD_MASTER_T
+(B_NO)
+LOGGING
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
