@@ -1,11 +1,12 @@
-create user crud identified by tiger;
+create user scott identified by tiger;
 
-grant create session to crud;
+grant create session to scott;
 
-grant create table to crud;
+grant create table to scott;
 
-grant create procedure to crud; 
+grant create procedure to scott; 
 
-grant create view to crud; 
+grant create view to scott; 
 
-alter user crud default tablespace users quota unlimited on users;;
+alter user scott default tablespace users quota unlimited on users;;
+
