@@ -60,5 +60,3 @@ grant create trigger to tomato
 grant create sequence to tomato
 -- 1일 증가하는 오브젝트 시퀀스?권한 부여
 
-COMMIT;
->>>>>>> fdabd44f0f4050f82163db1bf5a2743aa3f6baa4
